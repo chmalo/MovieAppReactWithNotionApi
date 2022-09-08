@@ -1,13 +1,12 @@
 import React from "react"
 import ReactDOM from "react-dom/client"
 import { BrowserRouter } from "react-router-dom"
-import App from "./App"
-import "./index.css"
+import {MoviesApp} from "./MoviesApp";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <MoviesApp />
     </BrowserRouter>
   </React.StrictMode>
 )
