@@ -1,40 +1,22 @@
 import {MovieCard} from "./MovieCard";
-
-const movies = [
-    {
-        id: '1',
-        generoMovie: '',
-        anioMovie: '',
-        puntuacionMovie: '',
-        idiomaMovie: '',
-        duracionMovie: '',
-        tituloMovie: 'Dragon Ball Super: Super Hero'
-    },
-    {
-        id: '2',
-        generoMovie: '',
-        anioMovie: '',
-        puntuacionMovie: '',
-        idiomaMovie: '',
-        duracionMovie: '',
-        tituloMovie: 'Spider-Man: Un nuevo universo'
-    }
-]
-
-
+import {useAxiosDataMovies} from "../hooks";
+import {Grid} from "@mui/material";
 
 export const MoviesList = () => {
+    const { movies, loading } = useAxiosDataMovies()
+
     return (
         <div>
             <h1>Movies list</h1>
 
-            <div className="row rows-cols-1 rows-cols-md-2 g-3">
+            {loading && <p className="animate__animated animate__flash">Loading</p>}
+
+            {!loading && <Grid container sx={{ml: 2}}>
                 {movies.map((movie) => (
                     <MovieCard key={movie.id} {...movie} />
                 ))
                 }
-            </div>
-
+            </Grid>}
         </div>
     );
 };
